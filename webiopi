@@ -1,0 +1,32 @@
+webiopi
+
+
+Start:
+	sudo python -m webiopi 
+	sudo /etc/init.d/webiopi start
+
+Stop:
+	sudo /etc/init.d/webiopi stop
+
+Status: 
+	sudo /etc/init.d/webiopi status
+
+Config folder:
+	cd /etc/webiopi/
+
+Start on boot:
+	sudo update-rc.d webiopi defaults
+
+Remove from start on boot:
+	sudo update-rc.d webiopi remove
+
+Run server with debugging:
+	sudo webiopi -d -c /etc/webiopi/config
+
+Change woring-dir:
+	goto config and change:
+		myproject = /home/pi/myproject/python/script.py
+		doc-root = /home/pi/myproject/html
+
+		
+Move stuff from pi2go to web root & copy & pase script.py into the site to test buttons.

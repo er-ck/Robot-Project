@@ -1,0 +1,7 @@
+Start: sudo /etc/init.d/webiopi start
+
+Stop: sudo /etc/init.d/webiopi stop
+
+Status: sudo /etc/init.d/webiopi status
+
+Change Password: sudo webiopi-passwd

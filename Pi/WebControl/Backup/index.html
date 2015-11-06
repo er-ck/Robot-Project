@@ -1,0 +1,106 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta name="viewport" content = "height = device-height, width = 420, user-scalable = no" /> 
+        <title>WebIOPi Room Control</title>
+        <script type="text/javascript" src="/webiopi.js"></script>
+        <script type="text/javascript">
+        webiopi().ready(function() {
+		//sets the pin for use add to this for more pins 
+		webiopi().setFunction(11,"out");
+		webiopi().setFunction(23,"out");
+		webiopi().setFunction(24,"out");
+
+		var content,button;
+		content = $("#content");
+
+		//Makes a clickble button for user to control GPIO pin 11 
+		button = webiopi().createGPIOButton(11,"Foot Fan");
+		content.append(button);
+
+		//Makes a clickble button for user to control GPIO pin 23 
+		button = webiopi().createGPIOButton(23,"Bed Fan");
+		content.append(button); 
+
+		//Makes a clickble button for user to control GPIO pin 24
+		button = webiopi().createGPIOButton(24,"3rd Plug");
+		content.append(button); 
+		
+		$.get("/devices/*", function(data) {
+			var content = $("#content");
+			for (i in data) {
+				if (data[i].type != "Serial") {
+					var device = webiopi().newDevice(data[i].type, data[i].name);
+					if (device) {
+						device.element = $("<div>");
+						content.append(device.element);
+						device.refreshUI();
+					}
+				}
+			}
+		});
+
+
+
+	});
+
+        
+        </script>
+        <style type="text/css">
+                button {
+                        display: block;
+                        margin: 5px 5px 5px 5px;
+                        width: 160px;
+                        height: 45px;
+                        font-size: 24pt;
+                        font-weight: bold;
+                        color: black;
+                }
+                
+                input[type="range"] {
+                        display: block;
+                        width: 160px;
+                        height: 45px;
+                }
+                
+                #gpio11.LOW {
+                        background-color: Blue;
+                }
+                
+                #gpio11.HIGH {
+                        background-color: Red;
+                }
+		#gpio23.LOW {
+                        background-color: Blue;
+                }
+                
+                #gpio23.HIGH {
+                        background-color: Red;
+                }
+
+		#gpio24.LOW {
+                        background-color: Blue;
+                }
+                
+                #gpio24.HIGH {
+                        background-color: Red;
+                }
+
+		div {
+    			background: url(website_images/background.png);
+    			background-size: 100% 100%;
+    			background-repeat: no-repeat;
+		}		
+
+        </style>
+</head>
+<body>
+	
+
+
+
+        <div id="content" align="center"></div>
+http://www.w3schools.com/css/tryit.asp?filename=trycss3_background-origin
+</body>
+</html>

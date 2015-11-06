@@ -1,0 +1,7 @@
+http://infohost.nmt.edu/tcc/help/pubs/tkinter/web/tkMessageBox.html
+http://effbot.org/tkinterbook/button.htm
+http://farmdev.com/src/secrets/magicmethod/
+
+
+Moving the robot whilst the WASD buttons are pressed down, you can use:
+http://stackoverflow.com/questions/3288001/how-do-i-bind-an-event-to-the-left-mouse-button-being-held-down
